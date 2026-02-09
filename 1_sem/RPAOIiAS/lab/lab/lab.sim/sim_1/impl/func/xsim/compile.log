@@ -1,0 +1,9 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.sim/sim_1/impl/func/xsim/FR_LR_TOP_func_impl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FR_DIVIDER
+INFO: [VRFC 10-311] analyzing module FR_DIVIDER__parameterized0
+INFO: [VRFC 10-311] analyzing module FR_FSM
+INFO: [VRFC 10-311] analyzing module FR_LR_TOP
+INFO: [VRFC 10-311] analyzing module FR_UART
+INFO: [VRFC 10-311] analyzing module M_BTN_FILTER_V10
+INFO: [VRFC 10-311] analyzing module M_BTN_FILTER_V10_0
+INFO: [VRFC 10-311] analyzing module glbl

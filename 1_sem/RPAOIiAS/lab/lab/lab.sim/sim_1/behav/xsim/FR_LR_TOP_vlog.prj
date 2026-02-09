@@ -1,0 +1,17 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../lab.srcs/sources_1/new/FR_DC_ASCII_HEX.v" \
+"../../../../lab.srcs/sources_1/new/FR_DC_HEX_ASCII.v" \
+"../../../../lab.srcs/sources_1/new/FR_DIVIDER.v" \
+"../../../../lab.srcs/sources_1/new/FR_FSM.v" \
+"../../../../lab.srcs/sources_1/new/FR_GEN_ERR.v" \
+"../../../../lab.srcs/sources_1/new/FR_ROM.v" \
+"../../../../lab.srcs/sources_1/new/FR_UART.v" \
+"../../../../lab.srcs/sources_1/new/M_BTN_FILTER_V10.v" \
+"../../../../lab.srcs/sources_1/new/FR_LR_TOP.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

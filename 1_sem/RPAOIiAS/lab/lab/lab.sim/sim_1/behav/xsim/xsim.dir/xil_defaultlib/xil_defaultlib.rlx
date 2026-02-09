@@ -1,0 +1,14 @@
+0.7
+2020.2
+Oct 14 2022
+05:20:55
+C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.sim/sim_1/behav/xsim/glbl.v,1665704903,verilog,,,,glbl,,,,,,,,
+C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_DC_ASCII_HEX.v,1766671324,verilog,,C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_DC_HEX_ASCII.v,,FR_DC_ASCII_HEX,,,,,,,,
+C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_DC_HEX_ASCII.v,1766671365,verilog,,C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_DIVIDER.v,,FR_DC_HEX_ASCII,,,,,,,,
+C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_DIVIDER.v,1766669862,verilog,,C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_FSM.v,,FR_DIVIDER,,,,,,,,
+C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_FSM.v,1766671445,verilog,,C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_GEN_ERR.v,,FR_FSM,,,,,,,,
+C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_GEN_ERR.v,1766670060,verilog,,C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_ROM.v,,FR_GEN_ERR,,,,,,,,
+C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_LR_TOP.v,1766669820,verilog,,,,FR_LR_TOP,,,,,,,,
+C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_ROM.v,1766671400,verilog,,C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_UART.v,,FR_ROM,,,,,,,,
+C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_UART.v,1766670107,verilog,,C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/M_BTN_FILTER_V10.v,,FR_UART,,,,,,,,
+C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/M_BTN_FILTER_V10.v,1766669987,verilog,,C:/Users/3BE3DA/maga/1_sem/RPAOIiAS/lab/lab/lab.srcs/sources_1/new/FR_LR_TOP.v,,M_BTN_FILTER_V10,,,,,,,,
