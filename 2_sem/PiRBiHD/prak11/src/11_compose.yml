@@ -1,0 +1,104 @@
+x-airflow-common: &airflow-common
+  image: apache/airflow:2.9.3-python3.11
+  environment: &airflow-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "false"
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-db:5432/airflow
+    AIRFLOW__WEBSERVER__SECRET_KEY: prak11-secret-key
+    _PIP_ADDITIONAL_REQUIREMENTS: "psycopg2-binary pymongo requests pandas"
+
+    # DWH Greenplum. По заданию: port=5432, username=gpadmin, password=123456, db=template1.
+    GP_HOST: greenplum
+    GP_PORT: "5432"
+    GP_USER: gpadmin
+    GP_PASSWORD: "123456"
+    GP_DB: template1
+
+    # Внешний PostgreSQL-источник. Измените значения под свою ранее созданную БД PostgrePRO/PostgreSQL.
+    PG_SOURCE_HOST: 7bd8a-rw.db.pub.dbaas.postgrespro.ru
+    PG_SOURCE_PORT: 5432
+    PG_SOURCE_USER: fomichev_ra_2025
+    PG_SOURCE_PASSWORD: T&$3q1aaB5e$
+    PG_SOURCE_DB: dbstud
+
+    # MongoDB-источник: контейнер mongo-container, порт 27017.
+    MONGO_URI: mongodb://host.docker.internal:27017
+    MONGO_DATABASE: ""
+
+    # Prometheus-источник: контейнер prak10, внутри prometheus:9090 и sales-exporter:8000.
+    PROMETHEUS_URL: http://host.docker.internal:9090
+    SALES_EXPORTER_URL: http://host.docker.internal:8000/metrics
+
+    # Если true, DAG падает при недоступном источнике. Для демонстрации удобно оставить false.
+    FAIL_ON_SOURCE_ERROR: "false"
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - airflow-logs:/opt/airflow/logs
+  depends_on:
+    airflow-db:
+      condition: service_healthy
+  networks:
+    - dwh-prak11-net
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+
+services:
+  greenplum:
+    image: parker1331/greenplum:7.0.0-22.04
+    container_name: greenplum
+    ports:
+      - "5433:5432"
+    environment:
+      GREENPLUM_PASSWORD: "123456"
+    networks:
+      - dwh-prak11-net
+    restart: unless-stopped
+
+  airflow-db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airflow -d airflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - airflow-db-data:/var/lib/postgresql/data
+    networks:
+      - dwh-prak11-net
+
+  airflow-init:
+    <<: *airflow-common
+    entrypoint: /bin/bash
+    command: -c "airflow db migrate && airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com || true"
+    restart: "no"
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 20
+    restart: unless-stopped
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    restart: unless-stopped
+
+volumes:
+  airflow-db-data:
+  airflow-logs:
+
+networks:
+  dwh-prak11-net:
+    name: dwh-prak11-net
+    driver: bridge

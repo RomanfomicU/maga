@@ -1,0 +1,9 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY sales_exporter.py .
+
+EXPOSE 8000
+
+CMD ["python", "sales_exporter.py"]
